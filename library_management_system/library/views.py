@@ -46,4 +46,11 @@ def add_book(request):
         form = BookForm()
     return render(request, 'library/add_book.html', {'form': form})
 
+
+
+@login_required
+def books_list(request):
+    books = Book.objects.all()
+    return render(request, 'library/books_list.html', {'books': books})
+
 # Create your views here.
