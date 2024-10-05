@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Book, Author, Category, IssuedBook
 from django.contrib.auth.models import User
 from .forms import BookForm
+from .models import Book, Author, Category, IssuedBook
+
 
 def signup(request):
     if request.method == 'POST':
