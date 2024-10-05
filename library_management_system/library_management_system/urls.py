@@ -28,4 +28,5 @@ urlpatterns = [
     path('add-book/', include('library.urls')),
     path('books/', include('library.urls')),
     path('', lambda request: redirect('login')),  # Redirect root to the login page
+     path('login/', custom_login, name='login'),
 ]

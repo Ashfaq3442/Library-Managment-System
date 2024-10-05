@@ -5,6 +5,7 @@ from .models import Book, Author, Category, IssuedBook
 from django.contrib.auth.models import User
 from .forms import BookForm
 from .models import Book, Author, Category, IssuedBook
+from django.contrib.auth import authenticate, login
 
 
 def signup(request):
@@ -69,3 +70,18 @@ def dashboard_view(request):
     # Your dashboard logic
     return render(request, 'library/dashboard.html')
 # Create your views here.
+
+def custom_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect based on user type
+            if user.is_staff:
+                return redirect('admin_dashboard')
+            else:
+                return redirect('user_dashboard')
+    # If GET request, show login form
+    return render(request, 'your_folder/login.html')
