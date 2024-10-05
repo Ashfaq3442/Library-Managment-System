@@ -55,4 +55,17 @@ def books_list(request):
     books = Book.objects.all()
     return render(request, 'library/books_list.html', {'books': books})
 
+
+
+def login_view(request):
+    # Your login logic
+    return render(request, 'library/login.html')
+
+def signup_view(request):
+    # Your signup logic
+    return render(request, 'library/signup.html')
+
+def dashboard_view(request):
+    # Your dashboard logic
+    return render(request, 'library/dashboard.html')
 # Create your views here.
