@@ -22,6 +22,13 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class IssuedBook(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    issued_to = models.CharField(max_length=100)
+    issued_on = models.DateField(auto_now_add=True)
+    return_by = models.DateField()
 
 
 # Create your models here.
